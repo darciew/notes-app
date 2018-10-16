@@ -6,10 +6,32 @@ function testNoteListModelCreation() {
 }
 testNoteListModelCreation();
 
-function testReturnsANoteListModel() {
-  console.log('returns a string that represents the note list model:');
+function testReturnsEmptyNoteListIfNoNotesSaved() {
+  console.log('returns no notes saved if notelist is empty:');
   var notelist = new NoteList();
   var notelistview = new NoteListView(notelist);
   assert.isTrue(notelistview.viewNoteList() === 'No notes saved');
 }
-testReturnsANoteListModel();
+testReturnsEmptyNoteListIfNoNotesSaved();
+
+function testReturnsOneNote() {
+  console.log('returns one note:');
+  var note = new Note('First note')
+  var notelist = new NoteList();
+  notelist.create(note);
+  var notelistview = new NoteListView(notelist);
+  assert.isTrue(notelistview.viewNoteList() === 'First note');
+}
+testReturnsOneNote();
+
+function testReturnsSeveralNotes() {
+  console.log('returns one note:');
+  var note = new Note('First note')
+  var note2 = new Note('Second note')
+  var notelist = new NoteList();
+  notelist.create(note);
+  notelist.create(note2);
+  var notelistview = new NoteListView(notelist);
+  assert.isTrue(notelistview.viewNoteList() === 'First note, Second note');
+}
+testReturnsSeveralNotes();

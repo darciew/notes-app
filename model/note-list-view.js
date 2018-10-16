@@ -4,9 +4,13 @@
   }
 
 NoteListView.prototype.viewNoteList = function () {
-  if (this.notelist.all.length === 0) {
+  if (this.returnNoteList().all.length === 0) {
     return 'No notes saved'
-  }
+  } else {
+    return this.returnNoteList().all.map(function(note) {
+      return `${note.text}`
+    }).join(', ')
+  };
 };
 
 NoteListView.prototype.returnNoteList = function () {

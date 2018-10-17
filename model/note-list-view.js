@@ -1,15 +1,15 @@
 (function(exports) {
-  function NoteListView(notelist) {
-    this.notelist = notelist;
+  function NoteListView(notelist = new NoteList) {
+    this.notelist = notelist; //new NoteList;
   }
 
 NoteListView.prototype.viewNoteList = function () {
   if (this.returnNoteList().all.length === 0) {
-    return 'No notes saved'
+    return '<ul><li><div>No notes saved</div></li></ul>'
   } else {
     return this.returnNoteList().all.map(function(note) {
-      return `${note.text}`
-    }).join(', ')
+      return `<ul><li><div>${note}</div></li></ul>`
+    }).join(' ')
   };
 };
 

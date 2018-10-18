@@ -30,4 +30,12 @@ describe('Notelist View', function() {
     assert.isTrue(notelistview.viewNoteList() === htmlString);
   });
 
+  it('shows the first 20 characters of each note in the list', function() {
+    var notelist = new NoteList();
+    notelist.create('This is a really really really really long note');
+    var notelistview = new NoteListView(notelist);
+    var htmlString = '<ul><li><div>This is a really rea</div></li></ul>'
+    assert.isTrue(notelistview.viewNoteList() === htmlString);
+  });
+
 });

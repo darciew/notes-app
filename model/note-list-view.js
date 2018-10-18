@@ -10,7 +10,8 @@ NoteListView.prototype.viewNoteList = function () {
     htmlString += '<li><div>No notes saved</div></li>';
   } else {
     for (var i = 0; i < notesArray.length; i++) {
-      htmlString += `<li><div>${notesArray[i].returnNote()}</div></li>`;
+      var string = notesArray[i].returnNote().slice(0,20);
+      htmlString += `<li><div>${string}</div></li>`;
     }
   }
   htmlString += "</ul>"

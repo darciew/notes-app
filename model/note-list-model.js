@@ -9,7 +9,9 @@ NoteList.prototype.viewAll = function () {
 
 NoteList.prototype.create = function (text) {
   var note = new Note(text);
-  return this.all.push(text);
+  // console.log("inside note list #create");
+  // console.log(note);
+  return this.all.push(note);
 };
 
 exports.NoteList = NoteList;

@@ -1,8 +1,8 @@
-function testNewNote() {
-  console.log('returns a new note:')
-  var note = new Note('My first note');
-  // assert.isTrue(note.returnNote() === 'My first note')
-  assert.isString(note.returnNote());
-}
+describe('Note Model', function() {
 
-testNewNote();
+  it('Returns a new note' , function() {
+    var note = new Note('My first note');
+    assert.isTrue(note.returnNote() === 'My first note')
+  });
+
+});

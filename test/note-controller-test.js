@@ -1,34 +1,31 @@
-function testNoteControllerCanBeInstantiated() {
-  console.log('A note controller can be instantiated:');
+describe('Note Controller', function() {
 
-  var noteController = new NoteController();
-  assert.isTrue(noteController instanceof NoteController);
-}
-testNoteControllerCanBeInstantiated()
+  it('A note controller can be instantiated:' , function() {
+    var noteController = new NoteController();
+    assert.isTrue(noteController instanceof NoteController);
+  });
 
+  it('The innerHTML property of the app element contains HTML', function() {
+    function NoteListDouble() {};
+    NoteListDouble.prototype = {
+      create: function() {}
+    };
+    var notelistdub = new NoteListDouble();
 
-function testInnerHTML() {
-  console.log('The innerHTML property of the app element contains HTML');
+    function NoteListViewDouble() {};
+    NoteListViewDouble.prototype = {
+      viewNoteList: function() {
+        return '<ul><li><div>Favourite food: pesto</div></li></ul>';
+      }
+    };
 
-  function NoteListDouble() {};
-  NoteListDouble.prototype = {
-    create: function() {}
-  };
-  var notelistdub = new NoteListDouble();
-
-  function NoteListViewDouble() {};
-  NoteListViewDouble.prototype = {
-    viewNoteList: function() {
-      return '<ul><li><div>Favourite food: pesto</div></li></ul>';
+    var noteController = new NoteController(notelistdub, NoteListViewDouble);
+    window.onload = function() {
+      noteController.getHTML()
+      var elem = document.getElementById("app")
+      assert.isTrue(elem.innerHTML === '<ul><li><div>Favourite food: pesto</div></li></ul>');
     }
-  };
+    
+  });
 
-  var noteController = new NoteController(notelistdub, NoteListViewDouble);
-  window.onload = function() {
-    noteController.getHTML()
-    var elem = document.getElementById("app")
-    assert.isTrue(elem.innerHTML === '<ul><li><div>Favourite food: pesto</div></li></ul>');
-  }
-};
-
-// testInnerHTML();
+});

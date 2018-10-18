@@ -1,6 +1,7 @@
 (function(exports) {
   function NoteList() {
     this.all = [];
+    this.idCount = 1;
   };
 
 NoteList.prototype.viewAll = function () {
@@ -8,7 +9,7 @@ NoteList.prototype.viewAll = function () {
 };
 
 NoteList.prototype.create = function (text) {
-  var note = new Note(text);
+  var note = new Note(text, this.idCount++);
   return this.all.push(note);
 };
 

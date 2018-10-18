@@ -11,7 +11,7 @@ NoteListView.prototype.viewNoteList = function () {
   } else {
     for (var i = 0; i < notesArray.length; i++) {
       var string = notesArray[i].returnNote().slice(0,20);
-      htmlString += `<li><div>${string}</div></li>`;
+      htmlString += `<li><div><a href="#notes/${notesArray[i].id}">${string}</a></div></li>`;
     }
   }
   htmlString += "</ul>"

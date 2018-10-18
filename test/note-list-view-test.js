@@ -17,7 +17,7 @@ describe('Notelist View', function() {
     var notelist = new NoteList();
     notelist.create('First note');
     var notelistview = new NoteListView(notelist);
-    var htmlString = '<ul><li><div>First note</div></li></ul>'
+    var htmlString = '<ul><li><div><a href="#notes/1">First note</a></div></li></ul>'
     assert.isTrue(notelistview.viewNoteList() === htmlString);
   });
 
@@ -26,7 +26,7 @@ describe('Notelist View', function() {
     notelist.create('First note');
     notelist.create('Second note');
     var notelistview = new NoteListView(notelist);
-    var htmlString = '<ul><li><div>First note</div></li><li><div>Second note</div></li></ul>'
+    var htmlString = '<ul><li><div><a href="#notes/1">First note</a></div></li><li><div><a href="#notes/2">Second note</a></div></li></ul>'
     assert.isTrue(notelistview.viewNoteList() === htmlString);
   });
 
@@ -34,7 +34,15 @@ describe('Notelist View', function() {
     var notelist = new NoteList();
     notelist.create('This is a really really really really long note');
     var notelistview = new NoteListView(notelist);
-    var htmlString = '<ul><li><div>This is a really rea</div></li></ul>'
+    var htmlString = '<ul><li><div><a href="#notes/1">This is a really rea</a></div></li></ul>'
+    assert.isTrue(notelistview.viewNoteList() === htmlString);
+  });
+
+  it('has a link for each note', function() {
+    var notelist = new NoteList();
+    notelist.create('First note');
+    var notelistview = new NoteListView(notelist);
+    var htmlString = '<ul><li><div><a href="#notes/1">First note</a></div></li></ul>'
     assert.isTrue(notelistview.viewNoteList() === htmlString);
   });
 

@@ -1,0 +1,5 @@
+node_modules/
+test/describe.js
+test/describe2.js
+test/it.js
+test/stringCheck.js
